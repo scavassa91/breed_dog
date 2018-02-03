@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import getAllBreeds from '../actions/index';
+import { getAllBreeds } from '../actions/index';
 
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
@@ -41,7 +41,7 @@ class ListBreed extends Component {
 
 function mapStateToProps(state){
   return{
-    breeds: state.breeds
+    breeds: state.BreedReducer
   };
 }
 

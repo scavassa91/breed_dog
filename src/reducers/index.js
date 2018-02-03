@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import BreedReducer from './reducer_breed';
+import ImageReducer from './reducer_image';
 
 const rootReducer = combineReducers({
-  breeds: BreedReducer
+  BreedReducer,
+  ImageReducer
 });
 
 export default rootReducer;

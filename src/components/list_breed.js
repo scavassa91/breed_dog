@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import _ from 'lodash';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllBreeds } from '../actions/index';
+import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
 
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
@@ -10,8 +10,10 @@ class ListBreed extends Component {
     this.props.getAllBreeds();
   }
 
-  handleClickBreed (key) {
-    console.log(key);
+  handleClickBreed (breed) {
+    this.props.selectBreed(breed);
+    this.props.getRandImg(breed);
+    console.log(this.props);
   }
 
   renderBreed () {
@@ -19,7 +21,7 @@ class ListBreed extends Component {
         _.map(this.props.breeds, (value, key) => {
           return (
             <ListGroupItem
-              onClick={(e) => this.handleClickBreed(key)}
+              onClick={() => this.handleClickBreed(key)}
               key={key}>
               {value}
             </ListGroupItem>
@@ -45,4 +47,4 @@ function mapStateToProps(state){
   };
 }
 
-export default connect(mapStateToProps, { getAllBreeds })(ListBreed);
+export default connect(mapStateToProps, { selectBreed, getAllBreeds, getRandImg })(ListBreed);

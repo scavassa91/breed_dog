@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 
 class BreedDetails extends Component {
   componentDidMount () {
-    this.props.getRandImg();
+    this.props.getRandImg(this.props.breed);
   }
 
   renderImg () {
@@ -15,13 +15,20 @@ class BreedDetails extends Component {
     return <p>Loading...</p>;
   }
 
+  renderBreed () {
+    if (this.props.breed)
+      return <h3>Click in the button to see a {this.props.breed} picture</h3>
+    return <h3>Click in the button to see a random picture</h3>
+  }
+
   handleButtonClick () {
-    this.props.getRandImg();
+    this.props.getRandImg(this.props.breed);
   }
 
   render() {
     return (
       <div className="breed-details col-md-8 float-left">
+        { this.renderBreed(this.props.breed) }
         <div className="hold-img">
           { this.renderImg() }
         </div>
@@ -33,7 +40,8 @@ class BreedDetails extends Component {
 
 function mapStateToProps(state){
   return{
-    imgUrl: state.ImageReducer
+    imgUrl: state.ImageReducer,
+    breed: state.ActiveBreed
   };
 }
 

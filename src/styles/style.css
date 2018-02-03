@@ -18,3 +18,8 @@ button {
   position: fixed;
   bottom: 5vh;
 }
+
+ul > li:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}

@@ -1,19 +1,48 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import { connect } from 'react-redux';
+import getAllBreeds from '../actions/index';
 
-import { ListGroup } from 'reactstrap';
-
-import ListBreedItem from './list_breed_item';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 class ListBreed extends Component {
-  render() {
+  componentDidMount () {
+    this.props.getAllBreeds();
+  }
+
+  handleClickBreed (key) {
+    console.log(key);
+  }
+
+  renderBreed () {
+    return(
+        _.map(this.props.breeds, (value, key) => {
+          return (
+            <ListGroupItem
+              onClick={(e) => this.handleClickBreed(key)}
+              key={key}>
+              {value}
+            </ListGroupItem>
+          );
+      })
+    );
+  }
+
+  render () {
     return (
-      <div className="list-breed col-md-4 float-left">
+      <div className="list-breed col-md-3 float-left">
         <ListGroup>
-          <ListBreedItem />
+          {this.renderBreed()}
         </ListGroup>
       </div>
       );
   }
 }
 
-export default ListBreed;
+function mapStateToProps(state){
+  return{
+    breeds: state.breeds
+  };
+}
+
+export default connect(mapStateToProps, { getAllBreeds })(ListBreed);

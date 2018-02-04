@@ -9,7 +9,7 @@ const ROOT_URL = 'https://dog.ceo/api';
 
 /**
  * Get all breeds from the server
- * {return} Object Reducer type and request response
+ * @return {Object} Reducer type and request response
  */
 export function getAllBreeds () {
   // Make the request using axios
@@ -23,7 +23,9 @@ export function getAllBreeds () {
 
 /**
  * Get a random dog image from all the breed
- * {return} Object Reducer type and image URL
+ * @param {String} breed name lowercase
+ * @param {String} subBreed name lowercase
+ * @return {Object} Reducer type and image URL
  */
 export function getRandImg (breed, subBreed) {
   // Make the request using axios
@@ -47,7 +49,8 @@ export function getRandImg (breed, subBreed) {
 
 /**
  * Set the active breed
- * {return} Object Reducer type and the breed selected
+ * @param {String} breed name lowercase
+ * @return {Object} Reducer type and the breed selected
  */
 export function selectBreed (breed) {
   return {

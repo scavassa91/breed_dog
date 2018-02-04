@@ -9,39 +9,41 @@ class BreedDetails extends Component {
     this.props.getRandImg();
   }
 
+  splitBreed (key) {
+    let breed;
+    let subBreed;
+    let split;
+
+    if (key.indexOf('-')) {
+      split = key.split('-');
+      breed = split[0];
+      subBreed = split[1];
+    }
+    return {
+      breed,
+      subBreed
+    }
+  }
+
   renderImg () {
     if (this.props.imgUrl)
-      return <img className="dog-img" alt="Random dog" src={this.props.imgUrl} />;
+    return <img className="dog-img" alt="Random dog" src={this.props.imgUrl} />;
     return <p>Loading...</p>;
   }
 
   renderBreed () {
     if (this.props.breed) {
-      let breed;
-      let subBreed;
-      let split;
+      let breedName = this.splitBreed(this.props.breed);
 
-      if (this.props.breed.indexOf('-')) {
-        split = this.props.breed.split('-');
-        breed = split[0];
-        subBreed = split[1];
-      }
-      return <h3>Click in the button to see a {breed} {subBreed} picture</h3>
+      return <h3>Click in the button to see a {breedName.breed} {breedName.subBreed} picture</h3>
     }
     return <h3>Click in the button to see a random picture</h3>
   }
 
   handleButtonClick () {
-    let breed;
-    let subBreed;
-    let split;
-
-    if (this.props.breed.indexOf('-')) {
-      split = this.props.breed.split('-');
-      breed = split[0];
-      subBreed = split[1];
-    }
-    this.props.getRandImg(breed ,subBreed);
+    let breedName = this.splitBreed(this.props.breed);
+    
+    this.props.getRandImg(breedName.breed ,breedName.subBreed);
   }
 
   render() {

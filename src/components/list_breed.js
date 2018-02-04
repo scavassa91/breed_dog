@@ -11,6 +11,14 @@ class ListBreed extends Component {
   }
 
   handleClickBreed (key) {
+    let breedName = this.splitBreed(key);
+
+    this.props.selectBreed(key);
+    this.props.getRandImg(breedName.breed, breedName.subBreed);
+    console.log(this.props);
+  }
+
+  splitBreed (key) {
     let breed;
     let subBreed;
     let split;
@@ -20,20 +28,23 @@ class ListBreed extends Component {
       breed = split[0];
       subBreed = split[1];
     }
-
-    this.props.selectBreed(key);
-    this.props.getRandImg(breed, subBreed);
-    console.log(this.props);
+    return {
+      breed,
+      subBreed
+    }
   }
 
   renderBreed () {
     return(
         _.map(this.props.breeds, (value, key) => {
+
+          let breedName = this.splitBreed(value);
+
           return (
             <ListGroupItem
               onClick={() => this.handleClickBreed(key)}
               key={key}>
-              {value}
+              {breedName.breed} {breedName.subBreed}
             </ListGroupItem>
           );
       })

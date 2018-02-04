@@ -13,7 +13,7 @@ To run the serve
 ``$ npm run start``
 
 To the project tests
-``$ npm run test`
+``$ npm run test``
 
 To generate de build
 ``$ npm run build``

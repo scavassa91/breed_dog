@@ -15,7 +15,6 @@ class ListBreed extends Component {
 
     this.props.selectBreed(key);
     this.props.getRandImg(breedName.breed, breedName.subBreed);
-    console.log(this.props);
   }
 
   splitBreed (key) {

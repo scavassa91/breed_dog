@@ -29,8 +29,6 @@ export function getRandImg (breed, subBreed) {
   // Make the request using axios
   let request;
 
-  console.log(breed);
-  console.log(subBreed);
   if (breed) {
     if (subBreed) {
       request = axios.get(`${ROOT_URL}/breed/${breed}/${subBreed}/images/random`);
@@ -40,8 +38,6 @@ export function getRandImg (breed, subBreed) {
   } else {
     request = axios.get(`${ROOT_URL}/breeds/image/random`);
   }
-
-  console.log(request);
 
   return {
     type: GET_RAND_IMG,

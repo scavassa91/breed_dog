@@ -19,6 +19,7 @@ export default function (state = {}, action) {
         return key;
       });
       allBreed = Object.assign({}, breed , allBreed);
+      allBreed = _(allBreed).toPairs().sortBy(0).fromPairs().value();
       return allBreed;
     default:
       return state;

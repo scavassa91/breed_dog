@@ -34,6 +34,11 @@ class ListBreed extends Component {
     }
   }
 
+  upperFistLetter (string) {
+    if (string)
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   renderBreed () {
     return(
         _.map(this.props.breeds, (value, key) => {
@@ -44,7 +49,7 @@ class ListBreed extends Component {
             <ListGroupItem
               onClick={() => this.handleClickBreed(key)}
               key={key}>
-              {breedName.breed} {breedName.subBreed}
+              {this.upperFistLetter(breedName.subBreed)} {this.upperFistLetter(breedName.breed)}
             </ListGroupItem>
           );
       })

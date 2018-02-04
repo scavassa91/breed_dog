@@ -25,6 +25,11 @@ class BreedDetails extends Component {
     }
   }
 
+  upperFistLetter (string) {
+    if (string)
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   renderImg () {
     if (this.props.imgUrl)
     return <img className="dog-img" alt="Random dog" src={this.props.imgUrl} />;
@@ -35,14 +40,14 @@ class BreedDetails extends Component {
     if (this.props.breed) {
       let breedName = this.splitBreed(this.props.breed);
 
-      return <h3>Click in the button to see a {breedName.breed} {breedName.subBreed} picture</h3>
+      return <h3>Click in the button to see a {this.upperFistLetter(breedName.subBreed)} {this.upperFistLetter(breedName.breed)} picture</h3>
     }
     return <h3>Click in the button to see a random picture</h3>
   }
 
   handleButtonClick () {
     let breedName = this.splitBreed(this.props.breed);
-    
+
     this.props.getRandImg(breedName.breed ,breedName.subBreed);
   }
 

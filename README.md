@@ -1,8 +1,8 @@
-#Dog Breed App
+# Dog Breed App
 
 I've decided to use React to develop my solution
 
-###Complile & Build
+### Complile & Build
 
 To complile and run the project you'll need:
 

@@ -1,6 +1,6 @@
 # Dog Breed App
 
-I've decided to use React to develop my solution
+I've decided to use React and Redux to develop my solution
 
 ### Complile & Build
 

@@ -10,9 +10,19 @@ class ListBreed extends Component {
     this.props.getAllBreeds();
   }
 
-  handleClickBreed (breed) {
-    this.props.selectBreed(breed);
-    this.props.getRandImg(breed);
+  handleClickBreed (key) {
+    let breed;
+    let subBreed;
+    let split;
+
+    if (key.indexOf('-')) {
+      split = key.split('-');
+      breed = split[0];
+      subBreed = split[1];
+    }
+
+    this.props.selectBreed(key);
+    this.props.getRandImg(breed, subBreed);
     console.log(this.props);
   }
 

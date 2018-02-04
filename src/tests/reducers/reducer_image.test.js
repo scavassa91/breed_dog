@@ -8,7 +8,6 @@ describe('Image Reducer', () => {
 
   it('GET_RAND_IMG', () => {
     const action = { type: GET_RAND_IMG, payload: { "data": { "message":"https://dog.ceo/api/img/collie-border/n02106166_204.jpg" } } };
-    console.log('12341234');
     expect(imageReducer({}, action)).toEqual("https://dog.ceo/api/img/collie-border/n02106166_204.jpg");
   });
 });

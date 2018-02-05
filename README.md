@@ -10,19 +10,25 @@ To complile and run the project you'll need:
  - In the root directory, execute ``$ npm install``
 
 To run the serve
+
 ``$ npm run start``
 
 To the project tests
+
 ``$ npm run test``
 
 To generate de build
+
 ``$ npm run build``
 
-##% Generate documentation
+### Generate documentation
+
 You need to instal jsdoc globaly runing
+
 ``npm install jsdoc -g``
 
 And then, execute this line
+
 ``jsdoc src -r -d docs``
 
 

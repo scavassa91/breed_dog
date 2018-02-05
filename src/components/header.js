@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import titleImg from '../images/title-app.jpg';
+
 import '../styles/header.css';
 
 /**
@@ -15,7 +17,7 @@ class Header extends Component {
     return (
       <header>
         <div className="container">
-          <h1>Dog Breed App</h1>
+          <img alt="title" src={titleImg} />
         </div>
       </header>
     );

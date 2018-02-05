@@ -6,6 +6,7 @@ import '../styles/app.css';
 // Import components
 import ListBreed from './list_breed';
 import BreedDetails from './breed_details';
+import Header from './header';
 
 /**
  * Class representing App
@@ -19,8 +20,11 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <ListBreed />
-        <BreedDetails />
+        <Header />
+        <div className="container">
+          <ListBreed />
+          <BreedDetails />
+        </div>
       </div>
     );
   }

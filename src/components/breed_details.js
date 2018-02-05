@@ -21,11 +21,16 @@ class BreedDetails extends Component {
    * Search a new image making a request to the server
    */
   handleButtonClick () {
+    let breedName
     // Get the current breed and split to make the request
-    let breedName = this.splitBreed(this.props.breed);
-
-    // Makes the request to get a new dog image
-    this.props.getRandImg(breedName.breed ,breedName.subBreed);
+    if (this.props.breed) {
+      breedName = this.splitBreed(this.props.breed);
+      // Makes the request to get a new dog image
+      this.props.getRandImg(breedName.breed ,breedName.subBreed);
+    } else {
+        // Makes the request to get a new dog image
+      this.props.getRandImg();
+    }
   }
 
   /**
@@ -70,30 +75,18 @@ class BreedDetails extends Component {
   }
 
   /**
-   * Render the dog details by breed
-   * @return {Object} With all the template to render the BreedDetails
-   */
-  renderBreed () {
-    if (this.props.breed) {
-      let breedName = this.splitBreed(this.props.breed);
-
-      return <h3>Click in the button to see a {this.upperFistLetter(breedName.subBreed)} {this.upperFistLetter(breedName.breed)} picture</h3>
-    }
-    return <h3>Click in the button to see a random picture</h3>
-  }
-
-  /**
    * Render the breed details
    * @return {Object} With all the template to render the BreedDetails
    */
   render() {
     return (
       <div className="breed-details col-md-8 float-left">
-        { this.renderBreed(this.props.breed) }
         <div className="hold-img">
           { this.renderImg() }
         </div>
-        <Button color="primary" onClick={() => this.handleButtonClick()}>Random</Button>
+        <div className="hold-button">
+          <Button color="primary" onClick={() => this.handleButtonClick()}>Next Picture</Button>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/list_breed.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/list_breed.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import _ from 'lodash';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
+
+import '../styles/list_breed.css';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+
+/**
+ * Class representing a List of Breed
+ * @extends Component
+ */
+class ListBreed extends Component {
+
+  /**
+   * Triggered after the component is rendered
+   */
+  componentDidMount () {
+    // Get all the list of breeds
+    this.props.getAllBreeds();
+  }
+
+  /**
+   * Handle when the Breed is clicked
+   * @param {String} key Dog breed splited by '-' in lowercase
+   */
+  handleClickBreed (key) {
+    // Split the breed to make a request
+    let breedName = this.splitBreed(key);
+
+    // Set the current selected breed
+    this.props.selectBreed(key);
+    // Get a specified image selected by breed and by subBreed
+    this.props.getRandImg(breedName.breed, breedName.subBreed);
+  }
+
+  /**
+   * Split the breed to render and make requests
+   * @param {String} key Dog breed split by '-'
+   * @return {Object} Object with the breed and subBreed names
+   */
+  splitBreed (key) {
+    let breed;
+    let subBreed;
+    let split;
+
+    if (key.indexOf('-')) {
+      split = key.split('-');
+      breed = split[0];
+      subBreed = split[1];
+    }
+    return {
+      breed,
+      subBreed
+    }
+  }
+
+  /**
+   * Change the first letter of a string uppercase
+   * @param {String} string A lowercase string
+   * @return {String} String with the first letter in  uppercase
+   */
+  upperFistLetter (string) {
+    if (string)
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  /**
+   * Render the list of breed item
+   * @return {Object} With all ListGroupItem to be rendered
+   */
+  renderBreed () {
+    return(
+        _.map(this.props.breeds, (value, key) => {
+
+          let breedName = this.splitBreed(value);
+
+          return (
+            &lt;ListGroupItem
+              onClick={() => this.handleClickBreed(key)}
+              key={key}>
+              {this.upperFistLetter(breedName.subBreed)} {this.upperFistLetter(breedName.breed)}
+            &lt;/ListGroupItem>
+          );
+      })
+    );
+  }
+
+  /**
+   * Render the list of breed
+   * @return {Object} With all the template to render the ListBreed
+   */
+  render () {
+    return (
+      &lt;div className="list-breed col-md-3 float-left">
+        &lt;ListGroup>
+          {this.renderBreed()}
+        &lt;/ListGroup>
+      &lt;/div>
+      );
+  }
+}
+
+
+/**
+ * Transform the reducer Object into props to the component
+ * @param {Object} state the reducer state
+ * @return {Object} the props to the component
+ */
+function mapStateToProps(state){
+  return{
+    breeds: state.BreedReducer
+  };
+}
+
+/**
+ * Export the connect with all the functions and props to make the ListBreed a container
+ * @module components/list_breed
+ */
+export default connect(mapStateToProps, { selectBreed, getAllBreeds, getRandImg })(ListBreed);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-components_app.html">components/app</a></li><li><a href="module-components_breed_details.html">components/breed_details</a></li><li><a href="module-components_footer.html">components/footer</a></li><li><a href="module-components_header.html">components/header</a></li><li><a href="module-components_list_breed.html">components/list_breed</a></li></ul><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="BreedDetails.html">BreedDetails</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="ListBreed.html">ListBreed</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BREED_SELECTED">BREED_SELECTED</a></li><li><a href="global.html#GET_ALL_BREEDS">GET_ALL_BREEDS</a></li><li><a href="global.html#GET_RAND_IMG">GET_RAND_IMG</a></li><li><a href="global.html#getAllBreeds">getAllBreeds</a></li><li><a href="global.html#getRandImg">getRandImg</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#rootReducer">rootReducer</a></li><li><a href="global.html#selectBreed">selectBreed</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Feb 05 2018 20:19:04 GMT-0200 (E. South America Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

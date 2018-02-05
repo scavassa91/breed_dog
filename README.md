@@ -18,5 +18,13 @@ To the project tests
 To generate de build
 ``$ npm run build``
 
+## Generate documentation
+You need to instal jsdoc globaly runing
+``npm install jsdoc -g``
+
+And then, execute this line
+``jsdoc src -r -d docs``
+
+
 
 Danilo Scavassa.

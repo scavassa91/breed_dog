@@ -26,7 +26,6 @@ button {
   background-color: #68b3ff;
   border-radius: 25px !important;
   border: none;
-  background: url(../images/button-bg.png);
 
   -webkit-box-shadow: 3px 5px 16px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 5px 16px -2px rgba(0,0,0,0.75);

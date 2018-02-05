@@ -2,7 +2,13 @@ import React, { Component } from  'react';
 import { connect } from 'react-redux';
 import { getRandImg } from '../actions/index';
 
+import Background from '../images/button-bg.png';
+
 import '../styles/breed_details.css';
+
+var buttonBg = {
+  backgroundImage: `url("${Background}")`
+};
 
 /**
  * Class representing the Breed Details
@@ -85,7 +91,7 @@ class BreedDetails extends Component {
           { this.renderImg() }
         </div>
         <div className="hold-button">
-          <button onClick={() => this.handleButtonClick()}></button>
+          <button style={ buttonBg } onClick={() => this.handleButtonClick()}></button>
         </div>
       </div>
     );

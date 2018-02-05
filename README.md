@@ -23,7 +23,7 @@ To generate de build
 
 ### Generate documentation
 
-You need to instal jsdoc globaly runing
+You need to instal jsdoc globally runing
 
 ``npm install jsdoc -g``
 

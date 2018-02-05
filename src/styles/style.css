@@ -3,32 +3,3 @@ body {
   padding: 0;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
-.list-group {
-  max-height: 80vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.hold-img {
-  padding-top: 15%;
-}
-
-.dog-img {
-  width: 75%;
-  max-height: 40vh;
-}
-
-.hold-button {
-  margin-top: 5%;
-}
-
-ul > li {
-  border: none !important;
-  text-align: left;
-}
-
-ul > li:hover {
-  color: #bfdfff;
-  cursor: pointer;
-}

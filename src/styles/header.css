@@ -1,6 +1,13 @@
 header {
+  position: relative;
+  width: 100%;
   padding: 2rem 2rem;
   background-color: #68b3ff;
-  margin-bottom: 1rem;
   color: white;
+
+  -webkit-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.75);
+
+  z-index: 2;
 }

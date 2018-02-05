@@ -2,7 +2,7 @@ import React, { Component } from  'react';
 import { connect } from 'react-redux';
 import { getRandImg } from '../actions/index';
 
-import { Button } from 'reactstrap';
+import '../styles/breed_details.css';
 
 /**
  * Class representing the Breed Details
@@ -80,12 +80,12 @@ class BreedDetails extends Component {
    */
   render() {
     return (
-      <div className="breed-details col-md-8 float-left">
+      <div className="breed-details col-md-9 float-left">
         <div className="hold-img">
           { this.renderImg() }
         </div>
         <div className="hold-button">
-          <Button color="primary" onClick={() => this.handleButtonClick()}>Next Picture</Button>
+          <button onClick={() => this.handleButtonClick()}></button>
         </div>
       </div>
     );

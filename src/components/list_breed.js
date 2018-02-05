@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
 
+import '../styles/list_breed.css';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 /**

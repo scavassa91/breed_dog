@@ -7,6 +7,7 @@ import '../styles/app.css';
 import ListBreed from './list_breed';
 import BreedDetails from './breed_details';
 import Header from './header';
+import Footer from './footer';
 
 /**
  * Class representing App
@@ -22,9 +23,12 @@ class App extends Component {
       <div className="app">
         <Header />
         <div className="container">
-          <ListBreed />
-          <BreedDetails />
+          <div className="float-left hold-center">
+            <ListBreed />
+            <BreedDetails />
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }

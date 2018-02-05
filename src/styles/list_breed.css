@@ -1,0 +1,19 @@
+.list-group {
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+ul > li {
+  border: none !important;
+  text-align: left;
+}
+
+ul > li:hover {
+  color: #bfdfff;
+  cursor: pointer;
+}
+
+.list-breed  {
+  padding: 0 !important;
+}

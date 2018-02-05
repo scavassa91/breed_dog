@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 
 import '../styles/header.css';
 
+/**
+ * Class representing the Header
+ * @extends Component
+ */
 class Header extends Component {
+  /**
+   * Render the Header
+   * @return {Object} With all the template to render the Header
+   */
   render () {
     return (
       <header>
@@ -14,4 +22,8 @@ class Header extends Component {
   }
 }
 
+/**
+ * Exports the component Header
+ * @module components/header
+ */
 export default Header;

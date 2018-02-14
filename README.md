@@ -9,15 +9,15 @@ To complile and run the project you'll need:
  - To install NodeJS (https://nodejs.org/)
  - In the root directory, execute ``$ npm install``
 
-To run the serve
+To run the **serve**
 
 ``$ npm run start``
 
-To the project tests
+To run the project **tests**
 
 ``$ npm run test``
 
-To generate de build
+To generate de **build**
 
 ``$ npm run build``
 

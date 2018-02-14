@@ -2,6 +2,8 @@ import React, { Component } from  'react';
 import { connect } from 'react-redux';
 import { getRandImg } from '../actions/index';
 
+import { splitBreed } from '../utils';
+
 import Background from '../images/button-bg.png';
 
 import '../styles/breed_details.css';
@@ -30,44 +32,13 @@ class BreedDetails extends Component {
     let breedName
     // Get the current breed and split to make the request
     if (this.props.breed) {
-      breedName = this.splitBreed(this.props.breed);
+      breedName = splitBreed(this.props.breed);
       // Makes the request to get a new dog image
       this.props.getRandImg(breedName.breed ,breedName.subBreed);
     } else {
         // Makes the request to get a new dog image
       this.props.getRandImg();
     }
-  }
-
-  /**
-   * Split the breed to render and make requests
-   * @param {String} key Dog breed split by '-'
-   * @return {Object} Object with the breed and subBreed names
-   */
-  splitBreed (key) {
-    let breed;
-    let subBreed;
-    let split;
-
-    if (key.indexOf('-')) {
-      split = key.split('-');
-      breed = split[0];
-      subBreed = split[1];
-    }
-    return {
-      breed,
-      subBreed
-    }
-  }
-
-  /**
-   * Change the first letter of a string uppercase
-   * @param {String} string A lowercase string
-   * @return {String} String with the first letter in  uppercase
-   */
-  upperFistLetter (string) {
-    if (string)
-    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   /**

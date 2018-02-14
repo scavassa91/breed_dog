@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
 
+import { splitBreed, upperFistLetter } from '../utils';
+
 import '../styles/list_breed.css';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+
 
 /**
  * Class representing a List of Breed
@@ -35,37 +38,6 @@ class ListBreed extends Component {
   }
 
   /**
-   * Split the breed to render and make requests
-   * @param {String} key Dog breed split by '-'
-   * @return {Object} Object with the breed and subBreed names
-   */
-  splitBreed (key) {
-    let breed;
-    let subBreed;
-    let split;
-
-    if (key.indexOf('-')) {
-      split = key.split('-');
-      breed = split[0];
-      subBreed = split[1];
-    }
-    return {
-      breed,
-      subBreed
-    }
-  }
-
-  /**
-   * Change the first letter of a string uppercase
-   * @param {String} string A lowercase string
-   * @return {String} String with the first letter in  uppercase
-   */
-  upperFistLetter (string) {
-    if (string)
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  /**
    * Render the list of breed item
    * @return {Object} With all ListGroupItem to be rendered
    */
@@ -73,13 +45,13 @@ class ListBreed extends Component {
     return(
         _.map(this.props.breeds, (value, key) => {
 
-          let breedName = this.splitBreed(value);
+          let breedName = splitBreed(value);
 
           return (
             <ListGroupItem
               onClick={() => this.handleClickBreed(key)}
               key={key}>
-              {this.upperFistLetter(breedName.subBreed)} {this.upperFistLetter(breedName.breed)}
+              {upperFistLetter(breedName.subBreed)} {upperFistLetter(breedName.breed)}
             </ListGroupItem>
           );
       })

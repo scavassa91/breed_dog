@@ -29,7 +29,7 @@ class ListBreed extends Component {
    */
   handleClickBreed (key) {
     // Split the breed to make a request
-    let breedName = this.splitBreed(key);
+    let breedName = splitBreed(key);
 
     // Set the current selected breed
     this.props.selectBreed(key);

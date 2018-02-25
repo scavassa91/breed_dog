@@ -7,7 +7,6 @@ import '../styles/app.css';
 import ListBreed from './list_breed';
 import BreedDetails from './breed_details';
 import Header from './header';
-import Footer from './footer';
 
 /**
  * Class representing App
@@ -21,14 +20,17 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header />
-        <div className="container">
-          <div className="float-left hold-center">
-            <ListBreed />
-            <BreedDetails />
+        <header>
+          <ListBreed />
+          <Header />
+        </header>
+        <main>
+          <div className="container">
+            <div className="float-left hold-center">
+              <BreedDetails />
+            </div>
           </div>
-        </div>
-        <Footer />
+        </main>
       </div>
     );
   }

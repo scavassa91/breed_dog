@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
 
+//import SearchBar from './search_bar';
+
 import { splitBreed, upperFistLetter } from '../utils';
 
 import '../styles/list_breed.css';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+//import { ListGroup, ListGroupItem } from 'reactstrap';
 
 
 /**
@@ -14,6 +16,11 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
  * @extends Component
  */
 class ListBreed extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = { breeds: '' };
+  }
 
   /**
    * Triggered after the component is rendered
@@ -21,6 +28,14 @@ class ListBreed extends Component {
   componentDidMount () {
     // Get all the list of breeds
     this.props.getAllBreeds();
+  }
+
+  /**
+   * Triggered when the component will receive new props
+   */
+  componentWillReceiveProps (nextProps) {
+    // Get the next props and set into the state breeds to make search
+    this.setState({ breeds: nextProps.breeds });
   }
 
   /**
@@ -37,24 +52,50 @@ class ListBreed extends Component {
     this.props.getRandImg(breedName.breed, breedName.subBreed);
   }
 
+  searchBreed (search) {
+    let breedsResult = _.filter(this.props.breeds, (item) => {
+      if (item.indexOf(search) >= 0) {
+        return item;
+      }
+    });
+    if (breedsResult.length > 0) {
+      this.setState({ breeds: breedsResult });
+    }
+  }
+
   /**
    * Render the list of breed item
    * @return {Object} With all ListGroupItem to be rendered
    */
-  renderBreed () {
-    return(
-        _.map(this.props.breeds, (value, key) => {
-
+  renderBreed (breeds) {
+    if (breeds.length > 0) {
+      return (breeds.map((value) => {
           let breedName = splitBreed(value);
 
           return (
-            <ListGroupItem
-              onClick={() => this.handleClickBreed(key)}
-              key={key}>
-              {upperFistLetter(breedName.subBreed)} {upperFistLetter(breedName.breed)}
-            </ListGroupItem>
+            <li key={value}>
+              <a
+                href="#"
+                className="waves-effect"
+                onClick={() => this.handleClickBreed(value)}>
+                {upperFistLetter(breedName.subBreed)} {upperFistLetter(breedName.breed)}
+              </a>
+            </li>
           );
-      })
+        })
+      );
+    }
+  }
+
+  renderSearchBar () {
+    return (
+      <li className="search">
+        <div className="search-wrapper card">
+          <input
+            onChange={ (event) => this.searchBreed(event.target.value) }
+            id="search"/><i className="material-icons">search</i>
+        </div>
+      </li>
     );
   }
 
@@ -65,9 +106,12 @@ class ListBreed extends Component {
   render () {
     return (
       <div className="list-breed col-md-3 float-left">
-        <ListGroup>
-          {this.renderBreed()}
-        </ListGroup>
+
+        <ul id="slide-out" className="side-nav fixed">
+          { this.renderSearchBar() }
+          { this.renderBreed(this.state.breeds) }
+        </ul>
+        <a href="#" data-activates="slide-out" className="button-collapse"><i className="material-icons">menu</i></a>
       </div>
       );
   }
@@ -81,7 +125,7 @@ class ListBreed extends Component {
  */
 function mapStateToProps(state){
   return{
-    breeds: state.BreedReducer
+    breeds: state.BreedReducer,
   };
 }
 

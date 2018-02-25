@@ -14,8 +14,6 @@ import reducers from './reducers';
 
 // Import the application style
 import './styles/style.css';
-// Import bootstrap to help with styles
-import 'bootstrap/dist/css/bootstrap.css';
 
 // Import the app component
 import App from './components/app';

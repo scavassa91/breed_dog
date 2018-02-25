@@ -37,6 +37,7 @@ export default function (state = {}, action) {
         allBreed = Object.assign({}, breed , allBreed);
         // Order by alphabetical order A-Z
         allBreed = _(allBreed).toPairs().sortBy(0).fromPairs().value();
+        allBreed = _.values(allBreed);
       }
       return allBreed;
     default:

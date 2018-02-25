@@ -3,13 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllBreeds, getRandImg, selectBreed } from '../actions/index';
 
-//import SearchBar from './search_bar';
-
 import { splitBreed, upperFistLetter } from '../utils';
 
 import '../styles/list_breed.css';
-//import { ListGroup, ListGroupItem } from 'reactstrap';
-
 
 /**
  * Class representing a List of Breed
@@ -52,14 +48,22 @@ class ListBreed extends Component {
     this.props.getRandImg(breedName.breed, breedName.subBreed);
   }
 
+  /**
+   * Makes a search into breeds
+   * @param {String} search Text to search
+   */
   searchBreed (search) {
+    // Filter breed by text and return an Array
     let breedsResult = _.filter(this.props.breeds, (item) => {
       if (item.indexOf(search.toLowerCase()) >= 0) {
         return item;
       }
     });
+    // Verify if there is some breed to show, if it's not show all the breeds
     if (breedsResult.length > 0) {
       this.setState({ breeds: breedsResult });
+    } else {
+      this.setState({ breeds: this.props.breeds });
     }
   }
 

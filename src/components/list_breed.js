@@ -54,7 +54,7 @@ class ListBreed extends Component {
 
   searchBreed (search) {
     let breedsResult = _.filter(this.props.breeds, (item) => {
-      if (item.indexOf(search) >= 0) {
+      if (item.indexOf(search.toLowerCase()) >= 0) {
         return item;
       }
     });

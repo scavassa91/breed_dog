@@ -43,7 +43,7 @@ class BreedDetails extends Component {
    */
   renderImg () {
     if (this.props.imgUrl)
-      return <MediaBox src={this.props.imgUrl} caption={this.props.breed} width="100%"/>
+      return <MediaBox src={this.props.imgUrl} width="100%"/>
     return <p>Loading...</p>;
   }
 

@@ -13,6 +13,6 @@ describe('Breed Reducer', () => {
   it('GET_ALL_BREEDS', () => {
     const action ={ type: GET_ALL_BREEDS, payload: { "data": {"message": { "poodle": [] } } } };
     // Calls the reducer sending expected parameters
-    expect(breedReducer({}, action)).toEqual({"poodle": "poodle"});
+    expect(breedReducer([], action)).toEqual(["poodle"]);
   });
 });

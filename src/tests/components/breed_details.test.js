@@ -20,7 +20,7 @@ describe('Breed Details', () => {
 
   // Renders the component
   it('shows the breed details', () => {
-    expect(component.findByProps({className: "breed-details col-md-8 float-left"}));
+    expect(component.findByProps({className: "breed-details"}));
   });
 
   // Destroy the component after each test

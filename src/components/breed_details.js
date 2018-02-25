@@ -53,7 +53,7 @@ class BreedDetails extends Component {
    */
   render() {
     return (
-      <div>
+      <div className="breed-details">
       <div className="container">
         <div className="hold-img">
           { this.renderImg() }

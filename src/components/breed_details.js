@@ -4,13 +4,9 @@ import { getRandImg } from '../actions/index';
 
 import { splitBreed } from '../utils';
 
-import Background from '../images/button-bg.png';
+import { MediaBox, Button, Icon } from 'react-materialize';
 
 import '../styles/breed_details.css';
-
-var buttonBg = {
-  backgroundImage: `url("${Background}")`
-};
 
 /**
  * Class representing the Breed Details
@@ -47,7 +43,7 @@ class BreedDetails extends Component {
    */
   renderImg () {
     if (this.props.imgUrl)
-    return <img className="dog-img" alt="Random dog" src={this.props.imgUrl} />;
+      return <MediaBox src={this.props.imgUrl} caption={this.props.breed} width="100%"/>
     return <p>Loading...</p>;
   }
 
@@ -57,14 +53,22 @@ class BreedDetails extends Component {
    */
   render() {
     return (
-      <div className="breed-details col-md-9 float-left">
+      <div>
+      <div className="container">
         <div className="hold-img">
           { this.renderImg() }
         </div>
-        <div className="hold-button">
-          <button style={ buttonBg } onClick={() => this.handleButtonClick()}></button>
-        </div>
       </div>
+      <div className="container hold-button">
+        <Button
+          className=" blue darken-2"
+          onClick={() => this.handleButtonClick()}
+          waves='light'>
+          Next
+          <Icon right>navigate_next</Icon>
+        </Button>
+      </div>
+    </div>
     );
   }
 }

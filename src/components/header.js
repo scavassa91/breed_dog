@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import titleImg from '../images/title-app.jpg';
-
 import '../styles/header.css';
 
 /**
@@ -15,11 +13,18 @@ class Header extends Component {
    */
   render () {
     return (
-      <header>
+      <div>
+        <nav className="top-nav blue darken-1">
+          <div className="nav-wrapper">
+            <div className="container">
+              <label className="page-title">Breed Dog</label>
+            </div>
+          </div>
+        </nav>
         <div className="container">
-          <img alt="title" src={titleImg} />
+          <a href="#" data-activates="slide-out" className="button-collapse hide-on-large-only"><i className="material-icons">menu</i></a>
         </div>
-      </header>
+      </div>
     );
   }
 }

@@ -12,9 +12,6 @@ import promise from 'redux-promise';
 // Import all reducers
 import reducers from './reducers';
 
-// Import the application style
-import './styles/style.css';
-
 // Import the app component
 import App from './components/app';
 import registerServiceWorker from './registerServiceWorker';
